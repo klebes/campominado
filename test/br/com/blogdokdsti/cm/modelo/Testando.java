@@ -4,19 +4,24 @@
  */
 package br.com.blogdokdsti.cm.modelo;
 
+import org.junit.Test;
+
+
 /**
  *
  * @author KDS
  */
-public class Test {
+public class Testando{
     String a = "a";
-   
-   
-    @org.junit.Test
-        void testar(){
-        if(a.equals(a)){
-            System.out.println("verdadeiro");
-        }
-        System.out.println("false");
-    }
+    String b = "a";
+    
+   @Test
+   void testar(){
+       if (a.equals(b)) {
+           System.out.println("igual");
+       }System.out.println("nao igual");
+ 
+   }
+  
+      
 }

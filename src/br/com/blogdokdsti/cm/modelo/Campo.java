@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+    
 package br.com.blogdokdsti.cm.modelo;
 
 import java.util.ArrayList;
@@ -69,4 +66,41 @@ public boolean adicionarVizinho(Campo vizinho){
  boolean vizinhancaSegura(){
      return vizinho.stream().noneMatch(v -> v.minado);
      }
+ void minar(){
+     minado = true;
+ }
+
+    public int getLINHA() {
+        return LINHA;
+    }
+
+    public int getCOLUNA() {
+        return COLUNA;
+    }
+    boolean objetivoAlcancado(){
+        boolean desvendado = !minado && aberto;
+        boolean protegido = minado && marcado;
+        return desvendado || protegido;
+    }
+long minasNaVizinhanca(){
+    return vizinho.stream().filter(v -> v.minado).count();
+}
+void reiniciar(){
+    marcado = false;
+    minado = false;
+    aberto = false;
+}
+public String toString(){
+    if(marcado){
+        return "X";
+    }else if(aberto && minado){
+        return "*";
+    }else if(aberto && minasNaVizinhanca() > 0){
+        return Long.toString(minasNaVizinhanca());
+    }else if(aberto){
+        return "x";
+    }else{
+        return "?";
+    }
+}
 }
